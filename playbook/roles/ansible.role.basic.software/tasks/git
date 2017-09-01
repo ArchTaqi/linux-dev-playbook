@@ -1,0 +1,6 @@
+---
+    - name: install lastest version of git
+      dnf: name=git state=latest
+
+    - name: configure git
+      template: src=gitconfig dest=/home/ed/.gitconfig

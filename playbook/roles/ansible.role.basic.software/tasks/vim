@@ -1,0 +1,6 @@
+---
+    - name: install lastest version of vim
+      dnf: name=vim state=latest
+
+    - name: configure vim
+      template: src=vimrc dest=/home/ed/.vimrc

@@ -1,0 +1,4 @@
+---
+#clear cache
+- name: Clear all Redis cache
+  shell: redis-cli -n {{ redis__database }} flushdb

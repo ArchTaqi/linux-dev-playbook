@@ -1,0 +1,7 @@
+---
+
+### Variables ###
+
+# Define Apache package name for RedHat based operating system
+apache_package: httpd
+apache_service: httpd

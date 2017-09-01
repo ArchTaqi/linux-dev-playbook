@@ -1,0 +1,14 @@
+---
+  - name: apache_start
+    service:
+      name: "{{ apache_service }}"
+      state: started
+    tags:
+      - apache-start
+
+  - name: apache_restart
+    service:
+      name: "{{ apache_service }}"
+      state: restarted
+    tags:
+      - apache-restart

@@ -1,0 +1,21 @@
+---
+  - name: Executing playbook to setup your laptop
+    become: true
+    become_user: root
+    gather_facts: yes
+    vars:
+      - user: muhammadtaqi
+      - is_ubuntu: "{{ansible_distribution == 'Ubuntu'}}"
+      - is_debian: "{{ansible_distribution == 'Debian'}}"
+      - is_centos: "{{ansible_distribution == 'CentOS'}}"
+    # vars_files:
+    # # - roles/development/vars/config.yml
+    # # - roles/development/vars/apt.yml
+    # # - roles/development/vars/checker.yml
+    # # - roles/development/vars/deb.yml
+    # # - roles/development/vars/gitconfig.yml
+    # # - roles/development/vars/node.yml
+    hosts: localhost
+    roles:
+#      - { role: ansible.role.basic.software, become: yes }
+      - { role: ansible.role.python, become: yes }

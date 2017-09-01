@@ -1,0 +1,7 @@
+---
+#init DB and run migrations
+- name: Set up migration commands config
+  template: src={{ app__project_migration_commands }} dest='{{ app__project_version_root }}/app/config/migration_commands.yml' force=yes
+
+- name: Run DB migrations
+  shell: php app/console doctrine:migration:migrate --env={{ app__env }} -n chdir={{ app__project_version_root }}

@@ -1,0 +1,12 @@
+- name: Install PostgreSQL server
+  dnf: name=postgresql-server state=installed
+
+- name: Initialise the database
+  command: postgresql-setup initdb creates=/var/lib/pgsql/data/pg_hba.conf
+
+- name: be sure postgresql is running and enabled
+  service: name=postgresql state=running enabled=yes
+
+- name: copy the pg_hba.conf template
+  copy: src=pg_hba.conf dest=/var/lib/pgsql/data/pg_hba.conf owner=postgres group=postgres
+  notify: restart postgresql

@@ -1,0 +1,71 @@
+---
+
+  - debug: msg="Python Role Started ........"
+
+  - name: python | Get the distribution specific variables
+    include_vars: "{{ansible_os_family}}.yml"
+
+#################### Install Python Core Packages ####################
+
+  - name: Python2 | Make sure that Python2 packages are installed (Debian)
+    apt:
+      pkg: "{{item}}"
+      state: present
+      update_cache: yes
+      cache_valid_time: 1800
+    with_items: "{{ python_apt_common_packages }}"
+    when: python_install_2 and ansible_os_family == "Debian"
+
+  - name: Python2 | Make sure that Python2 packages are installed (Debian)
+    apt:
+      pkg: "{{item}}"
+      state: present
+      update_cache: yes
+      cache_valid_time: 1800
+    with_items: "{{ python_apt_packages_2 }}"
+    when: python_install_2 and ansible_os_family == "Debian"
+
+  - name: Python3 | Make sure that Python3 packages are installed (Debian)
+    apt:
+      pkg: "{{item}}"
+      state: present
+      update_cache: yes
+      cache_valid_time: 1800
+    with_items: "{{ python_apt_packages_3 }}"
+    when: python_install_3 and ansible_os_family == "Debian"
+
+
+#################### Install Python Pip & Pip3 Packages ####################
+
+  - name: Update pip
+    pip:
+      name: "pip{% if python_pip_version is defined %}=={{ python_pip_version }}{% endif %}"
+      extra_args: "{% if python_pip_version is not defined %}--upgrade{% endif %}"
+      state: present
+      executable: "{{ python_pip_executable }}"
+    when: python_update_pip
+
+  - name: python | pip | update setuptools
+    pip:
+      name: "setuptools{% if python_setuptools_version is defined %}=={{python_setuptools_version}}{% endif %}"
+      state: present
+
+  - name: upgrade pip
+    shell: pip install -U pip
+
+  - name: upgrade pip3
+    shell: pip3 install --upgrade pip
+
+  - name: pip | Install global pip requirements (Debian)
+    pip:
+      name: "{{item}}"
+      state: present
+    with_items: "{{ core_pips }}"
+    when: ansible_os_family == "Debian"
+
+####################  Install Python virtualenv  ######################
+
+#  - name: python | virtualenv | install virtualenv
+#    pip:
+#      name: "virtualenv{% if python_virtualenv_version is defined %}=={{python_virtualenv_version}}{% endif %}"
+#      state: present

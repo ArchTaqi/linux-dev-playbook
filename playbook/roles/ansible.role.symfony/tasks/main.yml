@@ -1,0 +1,53 @@
+---
+  - include: symfony.yml
+  - include: scripts.yml
+  - include: uglify.yml
+  - include: sf_installer.yml
+  #  - include: blackfire.yml
+
+  #create directory
+  - include: jobs/prepare.yml
+
+  #deploy source code
+  - include: jobs/source-code.yml
+    when: env__vagrant != true
+
+  #prepare project structure
+  - include: jobs/structure.yml
+
+  #include tasks after source code deployed
+  - include: "{{ symfony_project__source_code_deployed }}"
+    when: "symfony_project__source_code_deployed is defined"
+
+  #build parameters
+  - include: jobs/parameters.yml
+
+  #install composer
+  - include: jobs/composer.yml
+
+  #clear cache
+  - include: jobs/cache.yml
+
+  #init DB and run migrations
+  - include: jobs/migration.yml
+
+  #install assets
+  - include: jobs/assets.yml
+
+  #install assets
+  - include: jobs/tests.yml
+    when: env__run_tests == true
+
+  #include tasks "before_finally"
+  - include: "{{ symfony_project__before_finally }}"
+    when: "symfony_project__before_finally is defined"
+
+  #clean cache, remove arfifacts
+  - include: jobs/finally.yml
+
+  #include tasks "after_finally"
+  - include: "{{ symfony_project__after_finally }}"
+    when: "symfony_project__after__finally is defined"
+
+  #config logrotation
+  - include: jobs/logrotate.yml

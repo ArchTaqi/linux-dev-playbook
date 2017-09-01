@@ -1,0 +1,8 @@
+- name: Install MongoDB
+  dnf: name={{ item }} state=present
+  with_items:
+    - mongodb
+    - mongodb-server
+
+- name: Enable and start the service
+  service: name=mongod state=running enabled=yes

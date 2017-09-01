@@ -1,0 +1,21 @@
+---
+  - name: Install required apt-packages
+    apt: name="{{ item }}" state=present force=yes
+    with_items:
+      - python-dev
+      - python-virtualenv
+      - python-pip
+      - openjdk-7-jre-headless
+      - libjpeg8-dev
+      - zlib1g-dev
+      - libfreetype6-dev
+      - liblcms2-dev
+      - libwebp-dev
+      - libtiff-dev
+      - tcl-dev
+      - tk-dev
+      - python-tk
+      - redis-server
+      - git
+      - ruby
+    when: ansible_os_family == "Debian" and ansible_distribution == "Ubuntu"  and ansible_architecture == "x86_64" and ansible_pkg_mgr == "apt"

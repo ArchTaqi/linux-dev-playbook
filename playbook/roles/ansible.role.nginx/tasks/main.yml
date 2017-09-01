@@ -1,0 +1,15 @@
+---
+# tasks file for nginx
+  - name: Install nginx
+    apt: name='nginx' state=present force=yes
+
+  - name: start nginx
+    service: name=nginx state=started
+
+#  - name: Add ppa Repository
+#    become: yes
+#    apt_repository: repo=ppa:nginx/stable
+#
+#  - name: Install Nginx
+#    become: yes
+#    apt: pkg=nginx state=latest

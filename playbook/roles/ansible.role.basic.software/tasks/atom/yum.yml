@@ -1,0 +1,11 @@
+---
+  - name: Check if package was installed
+    command: rpm -q atom
+    register: atom_installed
+    changed_when: atom_installed.rc == 1
+  - name: Download atom package
+    get_url: url=https://atom.io/download/rpm dest={{ atom_download_path }}
+    when: atom_installed.rc == 1
+  - name: Install the RPM
+    dnf: name={{ atom_download_path }}
+    when: atom_installed.rc == 1

@@ -1,0 +1,26 @@
+---
+  galaxy_info:
+    author: Muhamamd Taqi Hassan
+    description: Deploy django over server with nginx, uwsgi and supervisor
+    company: ENV Labs
+    license: MIT
+    min_ansible_version: 2.0
+
+    platforms:
+    - name: Ubuntu
+      versions:
+      - trusty
+      - vivid
+      - precise
+
+    categories:
+    - system
+    - monitoring
+    - database
+    - database:sql
+    - web
+
+  dependencies:
+    - { role: ENV.update_ubuntu }
+    - { role: ENV.mysql, mysql_server_password : 'password', when: database == 'mysql' }
+    - { role: ENV.postgresql, when: database == 'postgresql' }

@@ -1,0 +1,10 @@
+---
+  cronjobs:
+    testjob:
+      name: VmBackup's
+      state: present
+      hour: 06
+      minute: 11
+      day: '*'
+      user: {{ user }}
+      job: "date"

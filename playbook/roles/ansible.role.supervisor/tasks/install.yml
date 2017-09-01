@@ -1,0 +1,20 @@
+---
+
+# Targeting specific OSes or distributions:
+#
+#   - `ansible_system`               → Linux, BSD, ...
+#   - `ansible_os_family`            → Debian, RedHat, ...
+#   - `ansible_distribution`         → Debian, Ubuntu, RedHat, ...
+#   - `ansible_distribution_release` → precise, wheezy, ...
+#   - `ansible_pkg_mgr`              → apt, yum, ...
+  - name: install supervisord > Packages
+    apt:
+      name:  "{{ item }}"
+      state: "{{ apt_install_state | default('present') }}"
+      force: yes
+    with_items:
+      - supervisor
+    when: ansible_os_family == 'Debian'
+    tags:
+      - deps
+      - supervisor-install

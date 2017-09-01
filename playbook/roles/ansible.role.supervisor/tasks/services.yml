@@ -1,0 +1,13 @@
+---
+  - name: Create service
+    become: yes
+    template: src=startup.sh.j2 dest=/etc/init.d/supervisord mode=0755
+
+  - name: Run service
+    become: yes
+    service: name=supervisord state=started enabled=yes
+
+  - name: Run consumer
+    supervisorctl: name=sample_supervisor_script state=started
+    become: yes
+    ignore_errors: yes # task can be started already

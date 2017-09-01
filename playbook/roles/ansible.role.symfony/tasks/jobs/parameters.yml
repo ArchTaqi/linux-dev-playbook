@@ -1,0 +1,8 @@
+---
+#project configuration
+- name: Copy parameters.yml
+  template: src={{ app__project_parameters_yml }} dest={{app__project_version_root}}/app/config/parameters.yml
+
+#copy JWT key
+- name: Copy keys to target node
+  copy: src="jwt_public_dev.pem" dest="{{ app__jwt_public_key_path }}" backup=yes mode=0644 force=yes

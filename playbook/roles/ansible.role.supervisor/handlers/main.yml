@@ -1,0 +1,15 @@
+---
+# handlers file for supervisor
+
+  - name: reload supervisor
+    shell: supervisorctl reload
+    become: yes
+
+  - name: restart sample_supervisor_script
+    supervisorctl: name=sample_supervisor_script state=restarted
+    become: yes
+
+  - name: supervisor restart
+    service:
+      name:  supervisor
+      state: restarted

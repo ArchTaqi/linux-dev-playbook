@@ -1,0 +1,42 @@
+---
+
+#prepare cache
+- name: Clean and warmup Cache
+  shell: php app/console cache:clear --env={{app__env}} {{app__project_console_opts}} chdir={{ app__project_version_root }}
+
+#setup permissions for www-data
+- name: Setup permissions for shared data.
+  become: yes
+  file: owner={{ app__user }} group={{ app__group }} state=directory path={{item.path}} recurse=true
+  with_items:
+      - { path: "{{app__project_spool_dir}}" }
+      - { path: "{{app__project_version_root}}/app/cache"  }
+      - { path: "{{app__project_version_root}}/app/logs"  }
+      - { path: "{{app__project_version_root}}/app/tmp"   }
+  ignore_errors: true #cannot change owner for NFS shared folder
+
+#remove dev artifacts
+- name: Remove files from web dir
+  file: path={{ item }} state=absent
+  when: app__env == 'prod'
+  with_items:
+    - "{{ app__project_version_root }}/web/app_dev.php"
+    - "{{ app__project_version_root }}/web/config.php"
+
+- name: Remove files from web dir
+  file: path={{ item }} state=absent
+  when: env__run_functional_tests == false
+  with_items:
+    - "{{ app__project_version_root }}/web/app_test.php"
+
+#create symlink to current version
+- name: Create symlink.
+  file: state=link src={{ app__project_version_root }} path={{ app__project_latest }}
+  when: env__vagrant != true
+
+#clean releases
+- name: Cleanup releases.
+  become: yes
+  shell: >
+      cd {{app__project_base_dir}}/releases && ls -t1 | tail -n +$(({{app__project_keep_releases}}+1)) | xargs -n1 rm -rf
+  when: env__vagrant != true

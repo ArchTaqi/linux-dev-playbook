@@ -1,0 +1,16 @@
+---
+# defaults file for supervisor
+
+  # Config
+  supervisor_config_path: /etc/supervisor/supervisord.conf
+
+  supervisor_config_files:
+    - name: main supervisord conf file
+      src: supervisord.conf
+      dest: "{{ supervisor_config_path }}"
+    - name: sample_supervisor_script conf file
+      src: sample_supervisor_script.conf
+      dest: /etc/supervisor/conf.d/sample_supervisor_script.conf
+
+  # Log
+  supervisor_log_dir: /var/log/supervisor

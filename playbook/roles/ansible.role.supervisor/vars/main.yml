@@ -1,0 +1,9 @@
+---
+# vars file for supervisor
+  supervisor_dependencies:
+    - python
+  supervisor_install_prefix: /usr/local/bin
+  supervisor_default_file: /etc/default/supervisor
+
+  # vars for VM Backup Scripts Log
+  vm_export_dir: /media/muhammadtaqi/27E096E8638875B0/VMsBackup

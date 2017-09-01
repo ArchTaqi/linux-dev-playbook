@@ -1,0 +1,11 @@
+---
+  - apt_install:
+     # virtualization
+     - nfs-common
+     - nfs-server
+     - nfs-kernel-server
+     - vagrant
+     - virt-manager
+     - virtualbox
+     - kernel-devel
+     - kmod-VirtualBox

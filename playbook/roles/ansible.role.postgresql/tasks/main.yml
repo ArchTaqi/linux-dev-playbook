@@ -1,0 +1,12 @@
+---
+# file: ansible.role.postgresql/tasks/main.yml
+
+  - include: install.yml
+#  - include: configure.yml
+
+# The server needs to be running before users and databases can be created.
+#- name: Ensure PostgreSQL is running
+#  service: name=postgresql-{{ pgsql_version }} state=restarted enabled=yes
+#
+#- include: users.yml
+#- include: databases.yml

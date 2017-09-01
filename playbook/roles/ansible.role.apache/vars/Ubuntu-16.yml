@@ -1,0 +1,4 @@
+---
+# Define Apache package name for Debian based operating system
+apache_package: apache2
+apache_service: apache2

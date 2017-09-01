@@ -1,0 +1,14 @@
+---
+# tasks file for supervisor
+  - include: install.yml
+    tags:
+      - supervisor
+      - supervisor-install
+  - include: config.yml
+    tags:
+      - supervisor
+      - supervisor-configure
+  - include: services.yml
+    tags:
+      - supervisor
+      - supervisor-configure-services

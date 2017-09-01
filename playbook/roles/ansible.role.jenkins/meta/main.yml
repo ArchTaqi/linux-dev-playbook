@@ -1,0 +1,29 @@
+---
+  galaxy_info:
+    author: Muhamamd Taqi Hassan
+    description: A role to install and manage Jenkins on RHEL and CentOS
+    company: ENV Labs
+    license: MIT
+    min_ansible_version: 2.0
+
+    platforms:
+    - name: Ubuntu
+      versions:
+      - trusty
+      - xenial
+    - name: Fedora
+      versions:
+      - trusty
+      - xenial
+    - name: CentOS
+      versions:
+      - trusty
+      - xenial
+    - name: EL
+      versions:
+      - 7
+    categories:
+    - Jenkins
+    - Jenkins:web
+
+  dependencies: []

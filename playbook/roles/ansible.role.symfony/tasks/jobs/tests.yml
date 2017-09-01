@@ -1,0 +1,43 @@
+---
+- name: Copy router to tmp folder
+  copy: src=router_test.php dest="{{ app__project_version_root }}/app/tmp/router_test.php" mode=0644 force=yes
+
+- name: Run unit tests
+  shell: bin/phpunit -c app/phpunit.xml.dist chdir={{ app__project_version_root }}
+
+- name: Remove test DB
+  shell: php app/console doctrine:database:drop --force --env=test chdir={{ app__project_version_root }}
+  ignore_errors: yes
+
+- name: Init test DB
+  shell: php app/console doctrine:database:create --env=test chdir={{ app__project_version_root }}
+
+- name: Set up BDD config
+  template: src={{ app__project_tests_behat_yml }} dest="{{ app__project_version_root }}/behat.yml" mode=0644 force=yes
+
+- name: Prepare BDD tests
+  command: "{{ item }} chdir={{ app__project_version_root }}"
+  with_items:
+    - "php app/console okapi:cache:clear --env=test"
+    - "php app/console protest:cache:clear --env=test"
+
+- name: Ensure previous test server is stopped
+  shell: php app/console server:stop {{ app__bdd_host }} -q chdir={{ app__project_version_root }}
+  ignore_errors: yes
+
+- name: Start test server in background
+  shell: php app/console server:start {{ app__bdd_host }} --env=test --router={{ app__project_version_root }}/app/tmp/router_test.php chdir={{ app__project_version_root }}
+
+- name: Run BDD tests
+  shell: php bin/behat --format progress --stop-on-failure chdir={{ app__project_version_root }}
+
+- name: Ensure current test server is stopped
+  shell: php app/console server:stop {{ app__bdd_host }} -q chdir={{ app__project_version_root }}
+
+- name: Clear artifacts
+  file: path={{ item }} state=absent recurse=true
+  become: yes
+  ignore_errors: true
+  with_items:
+    - "{{ app__project_version_root }}/app/cache/test"
+    - "{{ app__project_version_root }}/app/tmp"

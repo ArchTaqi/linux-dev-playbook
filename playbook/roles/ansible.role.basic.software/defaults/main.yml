@@ -1,0 +1,289 @@
+---
+  apt_cache_valid_time: 3600
+  apt_update: true
+
+  apt_upgrade: true
+  apt_upgrade_type: safe          # safe, full or dist
+
+  apt_dependencies:
+    - python-apt
+    - aptitude
+
+  # apt_install_repositories: false
+  apt_install_repositories:
+      - ppa:ansible/ansible
+      - ppa:font-manager/staging
+      - ppa:maarten-baert/simplescreenrecorder
+      # editors
+      - ppa:webupd8team/atom
+      - ppa:webupd8team/sublime-text-3
+      # multimedia - audio, video, pictures
+      #- ppa:pinta-maintainers/pinta-stable
+      - ppa:rvm/smplayer
+      - ppa:otto-kesselgulasch/gimp
+      - ppa:gezakovacs/ppa           # UNetbootin
+      - ppa:midori/ppa               # midori-browser
+      - ppa:ubuntu-mozilla-daily/firefox-aurora # firefox developer edition
+
+
+  apt_install:
+    # Browsers
+    - midori
+    # Basic Development Dependencies
+    - ansible
+    - nfs-server
+    - nfs-kernel-server
+    - unetbootin
+    - firefox
+
+    # editors
+    - vim
+    - atom
+    - vile
+    - zile
+
+    # networking tools and debugging
+    - ftp
+    - httpie
+    - lftp
+    - lynx
+    - mtr
+    - ncftp
+    - nmap
+    - rsync
+    - sslscan
+    - strace
+    - telnet
+    - wget
+
+    # multimedia - audio, video, pictures
+    - jhead
+    - gifsicle
+    - imagemagick
+    - pinta
+    - gimp
+    # Multimedia
+    - vlc
+    - clementine
+    - smplayer
+    - smplayer-themes
+    - smplayer-skins
+    - simplescreenrecorder
+    # video joiner command line utility
+    # MP4Box -cat 01.mp4 -cat 02.mp4 -new joinedfile.mp4
+    - gpac
+    - mencoder
+    - libxvidcore4
+    - libmp3lame0
+
+    # compression
+    - unrar
+    - unrar-free
+    - lzip
+    - p7zip
+    - p7zip-rar
+    - p7zip-full
+    - pbzip2
+    - pigz
+
+    # programming stuff
+    - git
+    - python-apt
+    - bpython
+    - bpython3
+    - g++
+    - ruby
+    - rubygems
+    - subversion
+
+    # shells
+    - bash-completion
+    - zsh
+
+    # fonts
+    - font-manager
+
+    # small misc utils
+    - nmap
+    - baobab
+    - gparted
+    - tree
+    - inotify-tools
+    - xclip
+    - ack-grep
+    - apg
+    - atop
+    - boxes
+    - dateutils
+    - dstat
+    - fex
+    - figlet
+    - jq
+    - htop
+    - iftop
+    - iotop
+    - ntop
+    - moreutils
+    - powertop
+    - pv
+    - silversearcher-ag
+    - trickle
+    - units
+
+    # bigger misc things
+    - awscli
+    - chrony
+    - dconf-editor
+    - gnome-gmail
+    - gnome-terminal
+    - gnome-tweak-tool
+    - gnome-user-share
+    - pdfgrep
+    - powerline
+    - python-openstackclient
+    - qrencode
+    - sshpass
+    - terminator
+    - youtube-dl
+
+    # core_pkgs:
+    - apt-file
+    - blktrace
+    - curl
+    - diod
+    - fonts-font-awesome
+    - gnupg
+    - handbrake
+    - handbrake-cli
+    - i3
+    - language-pack-en-base
+    - laptop-mode-tools
+    - nfs-common
+    - openssl
+    - python
+    - python-pip
+    - suckless-tools
+    - sysstat
+    - tree
+    - vagrant
+    - vim
+    - vim-addon-manager
+    - vim-puppet
+    - vim-syntax-docker
+    - virtualbox
+    - wget
+    - whois
+    - x11-xserver-utils
+    - x264
+    - xfce4-terminal
+    - xfonts-terminus
+    - xinit
+
+  apt_remove_repositories: false
+#      - ppa:cassou/emacs
+#      - ppa:ubuntu-elisp/ppa
+
+  apt_remove: false
+  # apt_remove:
+  #   - python-apt
+  #   - unattended-upgrades
+
+
+  apt_remove:
+    # replace by nvm
+    - nodejs
+    - gnome-sudoku
+    - gnome-mines
+
+  atom_download_path: /tmp/atom_x86_64.rpm
+
+  users:
+    wicksy:
+      state: present
+      comment: Muhamamd Taqi
+      password: $6$Mdjwh64Sncg381dd$RyXJ6VOfBbKUqPBmdLSPIgcWWfOR0r4CZW3Dkvr0TDP/hQPr9PK8lTkfdASOBwyrB0IT2mp3MAJsrwd2MMcSM0
+      groups:
+        - sudo
+        - docker
+
+  sshkeys:
+    wicksy:
+      state: present
+      key: ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAnEIpXFliJ8TUvNEYRD7yrE1XbI/h5SFNvC+adOJ3rmwyFncUwQU4OUDMCqq45vc4mei6LzuO1bUH7sQkZaD+0QX5f6KvJlDkWIJaRlB7/rQxBr01incMyEzo1Xxsmarz4wv2IiROy7KnKP4VaDvFScUF8c/DyaStyj2BeV32rLiIwFI2l9LOHSy94sT9Bj5Ef+uTtGeO5ptWW89i/bo/IaB6ah7Hkk+NC8OplPJieEdzIkODLXZvwTon6NkcADIncrRA/8vpc3GxoCmyHdNPZp/facgHv9a7up2vXvEa6QWdLQwQqHDhsSOR2a9TxRTGKclrRsfBdXPd+i5dI+uC/Q== MacBookPro
+
+
+
+  apt_debian_packages:
+    - name: skypeforlinux-64-alpha
+      deb: skypeforlinux-64-alpha.deb
+      url: https://repo.skype.com/latest/skypeforlinux-64-alpha.deb
+    - name: Simplenote
+      deb: simplenote-1.0.8.deb
+      url: https://github.com/Automattic/simplenote-electron/releases/download/v1.0.8/simplenote-1.0.8.deb
+    - name: slack
+      deb: slack-desktop-2.4.2-amd64.deb
+      url: https://downloads.slack-edge.com/linux_releases/slack-desktop-2.4.2-amd64.deb
+    - name: Gitter
+      deb: gitter_3.1.0_amd64.deb
+      url: https://update.gitter.im/linux64/gitter_3.1.0_amd64.deb
+    - name: Google Chrome
+      deb: google-chrome-stable_current_amd64.deb
+      url: https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+    - name: Opera Browser
+      deb: opera-stable_46.0.2597.26_amd64.deb
+      url: http://download4.operacdn.com/pub/opera/desktop/46.0.2597.26/linux/opera-stable_46.0.2597.26_amd64.deb
+    - name: vivaldi Browser
+      deb: vivaldi-stable_1.10.867.42-1_amd64.deb
+      url: https://downloads.vivaldi.com/stable/vivaldi-stable_1.10.867.42-1_amd64.deb
+    - name: Dropbox
+      deb: dropbox_2015.10.28_amd64.deb
+      url: https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_2015.10.28_amd64.deb
+    - name: gitkraken
+      deb: gitkraken-amd64.deb
+      url: https://release.gitkraken.com/linux/gitkraken-amd64.deb
+    - name: Sublimt text editor
+      deb: sublime-text_build-3126_amd64.deb
+      url: https://download.sublimetext.com/sublime-text_build-3126_amd64.deb
+    - name: Team Viewer
+      deb: teamviewer_12.0.76279_i386.deb
+      url: https://downloadus2.teamviewer.com/download/version_12x/teamviewer_12.0.76279_i386.deb
+    - name: 4K Video Downloader
+      deb: 4kvideodownloader_4.2-1_amd64.deb
+      url: https://downloads.4kdownload.com/app/4kvideodownloader_4.2-1_amd64.deb
+    - name: 4K YouTube to MP3
+      deb: 4kyoutubetomp3_3.1-1_amd64.deb
+      url: https://downloads.4kdownload.com/app/4kyoutubetomp3_3.1-1_amd64.deb
+    - name: 4K Video to MP3
+      deb: 4kvideotomp3_2.3-1_amd64.deb
+      url: https://downloads.4kdownload.com/app/4kvideotomp3_2.3-1_amd64.deb
+    - name: 4K Slideshow Maker
+      deb: 4kslideshowmaker_1.6-1_amd64.deb
+      url: https://downloads.4kdownload.com/app/4kslideshowmaker_1.6-1_amd64.deb
+    - name: 4K Stogram is an Instagram Downloader for PC, Mac and Linux
+      deb: 4kstogram_2.3-1_amd64.deb
+      url: https://downloads.4kdownload.com/app/4kstogram_2.3-1_amd64.deb
+    - name: Pencil free and opensource tool for making diagrams and GUI prototyping. 
+      deb: Pencil_3.0.3_amd64.deb
+      url: http://pencil.evolus.vn/dl/V3.0.3/Pencil_3.0.3_amd64.deb
+     
+      
+      
+      
+  yum_install:
+    # programming stuff
+    - gcc-c++
+
+    # packaging
+    - copr-cli
+    - fedora-packager
+    - tito
+    # small misc utils
+    - the_silver_searcher
+
+    # bigger misc things
+    - livecd-tools
+    - xchat
+
+  brew_install:
+     # small misc utils
+     - the_silver_searcher

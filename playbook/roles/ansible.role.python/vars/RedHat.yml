@@ -1,0 +1,47 @@
+---
+
+  python_yum_packages_2:
+    - python
+    - python-devel
+    - python-pip
+    - python-virtualenv
+
+  python_yum_packages_3:
+    - python3
+    - python3-dev
+    - python3-pip
+    - python3-venv
+
+  python_yum_packages:
+    #- pip
+    - virtualenv
+
+    # common
+    - bpython
+    - bpython3
+    - python-feedparser
+    # pyyaml and it's Dependencies
+    - libyaml-dev
+    - libpython2.7-dev
+    #- pyyaml
+    - Cython
+    - numpy
+    - python-jinja2
+    - python-matplotlib
+    - python-numexpr
+    - python-pillow
+    - python-pip
+    - python-tables
+    - PyYAML
+    - scipy
+
+  core_pips:
+    - pip==8.1.1
+    - awscli
+    - boto3
+    - docker-py==1.7.2
+    - gitpython
+    - mkdocs
+    - pep8
+    - virtualenv
+    - virtualenvwrapper

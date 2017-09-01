@@ -1,0 +1,42 @@
+---
+
+apt_repositories:
+  - ppa:ansible/ansible
+  - ppa:ondrej/php5
+  - ppa:nviennot/tmate
+
+apt_install:
+  - python-apt
+  - unattended-upgrades
+  - openjdk-7-jre
+  - tmux
+  - vim
+  - nmap
+  - unrar
+  - baobab
+  - gparted
+  - tree
+  - inotify-tools
+
+  # devlopment
+  - ansible
+  - nfs-server
+  - tmate
+
+  # Web
+  - chromium-browser
+
+  # Multimedia
+  - vlc
+  - clementine
+
+  # php devlopment
+  - php5
+  - php5-intl
+  - php5-curl
+
+apt_remove:
+  # replace by nvm
+  - nodejs
+  - gnome-sudoku
+  - gnome-mines
