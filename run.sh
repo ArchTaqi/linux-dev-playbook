@@ -1,6 +1,11 @@
 #!/bin/bash
 unamestr=$(uname)
 
+
+# sudo sed --in-place 's/^#\s*\(%wheel\s\+ALL=(ALL)\s\+NOPASSWD:\s\+ALL\)/\1/' /etc/sudoers
+# sudo dnf update -y
+# sudo dnf install -y ansible libselinux-python python-dnf
+
 # Install ansible dependencies
 # sudo apt-get install build-essential libssl-dev libffi-dev python-dev python-setuptools -y
 # sudo easy_install pip
@@ -12,9 +17,12 @@ unamestr=$(uname)
 # sudo apt-get install ansible
 
 # Run ansible playbook
-ansible-playbook playbook/playbook.yml -K
+ansible-playbook playbook/playbook.yml -K --inventory=hosts/localhost
 
 
+
+# sudo dnf install python2 python3
+# sudo dnf install ansible
 
 # unamestr=$(uname)
 #

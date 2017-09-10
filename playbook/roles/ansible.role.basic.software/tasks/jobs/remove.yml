@@ -1,0 +1,29 @@
+---
+
+#################### Ubuntu (Debian) Update apt-get ####################
+
+  - name: Remove packages.
+    apt:
+      pkg="{{ item }}"
+      state=absent
+    with_items: apt_remove
+    when: is_ubuntu and apt_remove
+
+####################  Fedora (RedHat) Update dnf  ######################
+
+  # - name: Remove conflicting Packages - RedHat
+  #   dnf:
+  #     name: "{{ item }}"
+  #     state: absent
+  #   with_items:
+  #     - "{{ os_packages_conflicting_remove }}"
+  #   when: is_fedora and os_packages_conflicting_remove
+
+  # - name: Remove Banned Packages
+  #   dnf:
+  #     name: "{{ item }}"
+  #     state: absent
+  #   with_items:
+  #     - "{{ os_banned_packages }}"
+  #   when: is_fedora and os_banned_packages
+

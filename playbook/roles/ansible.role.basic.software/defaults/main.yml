@@ -25,7 +25,6 @@
       - ppa:midori/ppa               # midori-browser
       - ppa:ubuntu-mozilla-daily/firefox-aurora # firefox developer edition
 
-
   apt_install:
     # Browsers
     - midori
@@ -184,16 +183,11 @@
 #      - ppa:ubuntu-elisp/ppa
 
   apt_remove: false
-  # apt_remove:
-  #   - python-apt
-  #   - unattended-upgrades
-
-
-  apt_remove:
-    # replace by nvm
-    - nodejs
-    - gnome-sudoku
-    - gnome-mines
+    # - python-apt
+    # - unattended-upgrades
+    # - nodejs
+    # - gnome-sudoku
+    # - gnome-mines
 
   atom_download_path: /tmp/atom_x86_64.rpm
 
@@ -210,8 +204,6 @@
     wicksy:
       state: present
       key: ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAnEIpXFliJ8TUvNEYRD7yrE1XbI/h5SFNvC+adOJ3rmwyFncUwQU4OUDMCqq45vc4mei6LzuO1bUH7sQkZaD+0QX5f6KvJlDkWIJaRlB7/rQxBr01incMyEzo1Xxsmarz4wv2IiROy7KnKP4VaDvFScUF8c/DyaStyj2BeV32rLiIwFI2l9LOHSy94sT9Bj5Ef+uTtGeO5ptWW89i/bo/IaB6ah7Hkk+NC8OplPJieEdzIkODLXZvwTon6NkcADIncrRA/8vpc3GxoCmyHdNPZp/facgHv9a7up2vXvEa6QWdLQwQqHDhsSOR2a9TxRTGKclrRsfBdXPd+i5dI+uC/Q== MacBookPro
-
-
 
   apt_debian_packages:
     - name: skypeforlinux-64-alpha
@@ -264,10 +256,7 @@
       url: https://downloads.4kdownload.com/app/4kstogram_2.3-1_amd64.deb
     - name: Pencil free and opensource tool for making diagrams and GUI prototyping. 
       deb: Pencil_3.0.3_amd64.deb
-      url: http://pencil.evolus.vn/dl/V3.0.3/Pencil_3.0.3_amd64.deb
-     
-      
-      
+      url: http://pencil.evolus.vn/dl/V3.0.3/Pencil_3.0.3_amd64.deb  
       
   yum_install:
     # programming stuff

@@ -1,0 +1,24 @@
+---
+
+#################### Ubuntu (Debian) Update apt-get ####################
+
+  - name: (Debian) Update the apt cache.
+    apt:
+      cache_valid_time="{{ apt_cache_valid_time }}"
+      update_cache=yes
+    when: is_ubuntu and apt_update
+
+####################  Fedora (RedHat) Update dnf  ######################
+
+  - name: (RedHat) Update Yum Packages
+    dnf:
+      name: '*'
+      state: latest
+    when: is_fedora
+    tags:
+      - common
+      - repos
+
+  - name: (RedHat) Clear yum cache
+    command: yum clean all
+    when: is_fedora

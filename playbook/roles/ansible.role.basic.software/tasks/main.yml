@@ -1,72 +1,75 @@
 ---
-  - include: update.yml
-  - include: apt_repositories/dependencies.yml
-  - include: apt_repositories/repositories.yml
-  - include: upgrade.yml
-  - include: install.yml
-  - include: remove.yml
-  - include: debian/debian.yml
-  - include: users/setup_user.yml
-  #- include: reboot.yml
-  # gsettings set org.gnome.desktop.interface font-name 'Calibri 12'
-  - name: install base packages
-    apt: pkg={{item}} state=present update_cache=yes cache_valid_time=604800
-    with_items:
-      - sysstat
-      - htop
-      - git
-      - subversion
-      - mercurial
-      - python-samba
-      - vim
-      - virtualbox
-      - vagrant
-      - indicator-multiload
-      - chromium-browser
-      - sublime-text
-      - rdesktop
-      - openvpn
-      - python-dev
-      - r-base
-      - r-recommended
-      - tilemill
-      - classicmenu-indicator
-      - gimp
-      - inkscape
-      - ruby-dev
-      - sqlite
-      - pgadmin3
-      - postgresql
-      - libpq-dev
-      - python-psycopg2
-      - imagemagick
-      - marble
-      - mapserver-bin
-      - python-mapscript
-      - python-matplotlib
-      - liblas-bin
-      - gdal-bin
-      - python-gdal
-      - grass
-      - libspatialite-dev
-      - spatialite-gui
-      - spatialite-bin
-      - libzmq-dev
-      - qgis
-      - pandoc
-      - texlive-latex-base
-      - texlive-latex-recommended
-      - texlive-latex-extra
-      - texlive-fonts-recommended
-      - unity-tweak-tool
-      - xclip
-      - sqliteman
-      - filezilla
-      - gummi
-      - texmaker
-      - keepassx
-      - wireshark
-      - cifs-utils
+  - name: Include OS-distribution specific variables
+    include_vars: "{{ansible_os_family}}.yml"
+   
+  - include: jobs/update.yml
+  - include: jobs/dependencies.yml
+  - include: jobs/repositories.yml
+  # - include: jobs/upgrade.yml
+  - include: jobs/install.yml
+  - include: jobs/remove.yml
+  - include: jobs/setup_user.yml
+  - include: jobs/reboot.yml
+
+  # # gsettings set org.gnome.desktop.interface font-name 'Calibri 12'
+  # - name: install base packages
+  #   apt: pkg={{item}} state=present update_cache=yes cache_valid_time=604800
+  #   with_items:
+  #     - sysstat
+  #     - htop
+  #     - git
+  #     - subversion
+  #     - mercurial
+  #     - python-samba
+  #     - vim
+  #     - virtualbox
+  #     - vagrant
+  #     - indicator-multiload
+  #     - chromium-browser
+  #     - sublime-text
+  #     - rdesktop
+  #     - openvpn
+  #     - python-dev
+  #     - r-base
+  #     - r-recommended
+  #     - tilemill
+  #     - classicmenu-indicator
+  #     - gimp
+  #     - inkscape
+  #     - ruby-dev
+  #     - sqlite
+  #     - pgadmin3
+  #     - postgresql
+  #     - libpq-dev
+  #     - python-psycopg2
+  #     - imagemagick
+  #     - marble
+  #     - mapserver-bin
+  #     - python-mapscript
+  #     - python-matplotlib
+  #     - liblas-bin
+  #     - gdal-bin
+  #     - python-gdal
+  #     - grass
+  #     - libspatialite-dev
+  #     - spatialite-gui
+  #     - spatialite-bin
+  #     - libzmq-dev
+  #     - qgis
+  #     - pandoc
+  #     - texlive-latex-base
+  #     - texlive-latex-recommended
+  #     - texlive-latex-extra
+  #     - texlive-fonts-recommended
+  #     - unity-tweak-tool
+  #     - xclip
+  #     - sqliteman
+  #     - filezilla
+  #     - gummi
+  #     - texmaker
+  #     - keepassx
+  #     - wireshark
+  #     - cifs-utils
 #  - include: base.yml
 #    become: false
 #
