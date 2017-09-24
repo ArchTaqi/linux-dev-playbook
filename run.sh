@@ -17,7 +17,7 @@ unamestr=$(uname)
 #sudo apt-get install ansible -y
 
 # Run ansible playbook
-ansible-galaxy install -r playbook/requirements/requirements.yml
+ansible-galaxy install -r requirements/requirements.yml
 ansible-playbook playbook/playbook.yml -K --inventory=hosts/localhost
 
 

@@ -76,25 +76,22 @@
 #  easy_install:
 #    name: pip
 
-- name: Install common pip packages
-  become: true
-  become_method: sudo
-  pip:
-    name: "{{ item.name }}"
-    extra_args: "{{ item.extra_args | default() }}"
-    state: present
-  with_items:
-- "{{ pip_packages }}"
-
-pip_packages:
-  - { name: 'boto' }
-  - { name: 'jmespath' }
-  - { name: 'PyYAML' }
-  - { name: 'credstash' }
-  - { name: 'docopts' }
-  - { name: 'pyspf' }
-  - { name: 'pydns' }
-  - { name: 'Jinja2' }
-  #- { name: 'skew' }
-  - { name: 'keyring' }
+  - name: Install common pip packages
+    become: true
+    become_method: sudo
+    pip:
+      name: "{{ item.name }}"
+      extra_args: "{{ item.extra_args | default() }}"
+      state: present
+    with_items:
+      - { name: 'boto' }
+      - { name: 'jmespath' }
+      - { name: 'PyYAML' }
+      - { name: 'credstash' }
+      - { name: 'docopts' }
+      - { name: 'pyspf' }
+      - { name: 'pydns' }
+      - { name: 'Jinja2' }
+      #- { name: 'skew' }
+      - { name: 'keyring' }
 #- { name: 'python-ldap', extra_args: "--global-option=build_ext --global-option=\"-I$(xcrun --show-sdk-path)/usr/include/sasl\"" }

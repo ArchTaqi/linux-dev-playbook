@@ -1,8 +1,8 @@
 ---
-  python_install_2: yes
+  python_install_2: no
   python_install_3: yes
 
-  python_install_pip2: yes
+  python_install_pip2: no
   python_install_pip3: yes
 
   python_pip_packages: []
