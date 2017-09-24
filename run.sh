@@ -11,12 +11,13 @@ unamestr=$(uname)
 # sudo easy_install pip
 # sudo -H pip install -r requirements.txt
 
-# echo "Installing Ansible"
-# sudo apt-add-repository ppa:ansible/ansible
-# sudo apt-get update
-# sudo apt-get install ansible
+#echo "Installing Ansible"
+#sudo apt-add-repository ppa:ansible/ansible -y
+#sudo apt-get update -y
+#sudo apt-get install ansible -y
 
 # Run ansible playbook
+ansible-galaxy install -r playbook/requirements/requirements.yml
 ansible-playbook playbook/playbook.yml -K --inventory=hosts/localhost
 
 

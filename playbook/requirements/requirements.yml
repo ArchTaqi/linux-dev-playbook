@@ -1,0 +1,7 @@
+- src: https://github.com/muhammadtaqi/ansible.role.postgresql.git
+  version: master
+  name: ansible.role.postgresql
+
+- src: https://github.com/muhammadtaqi/ansible.role.basic.software.git
+  version: master
+  name: ansible.role.basic.software
