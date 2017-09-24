@@ -1,4 +1,4 @@
 # Created by .ignore support plugin (hsz.mobi)
 .idea
-playbook/roles/ansible.role.postgresql
-playbook/roles/ansible.role.basic.software
+playbook/roles/ansible.role.postgresql/
+playbook/roles/ansible.role.basic.software/

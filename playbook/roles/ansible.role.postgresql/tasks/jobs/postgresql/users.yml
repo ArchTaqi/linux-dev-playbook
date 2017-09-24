@@ -1,8 +1,0 @@
----
-#- name: Ensure database users are created
-#  postgresql_user:
-#    encrypted: no
-#    name: "{{ pgsql__user }}"
-#    password: "{{ pgsql__user_pass }}"
-#    state: present
-#    role_attr_flags: "LOGIN,SUPERUSER"

@@ -1,3 +1,0 @@
----
-  - name: Reboot system to apply changes
-    command: shutdown -r now "Ansible updates triggered"

@@ -1,9 +1,0 @@
----
-    - name: install lastest version of zsh
-      dnf: name=zsh state=latest
-
-    - name: configure zsh
-      template: src=zshrc dest=/home/ed/.zshrc
-
-    - name: configure shell for user ed
-      shell:  chsh -s /bin/zsh ed

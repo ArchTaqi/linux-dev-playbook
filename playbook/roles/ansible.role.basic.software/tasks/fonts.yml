@@ -1,6 +1,0 @@
-- package: name={{ item }} state=present
-  with_items:
-    - inconsolata-font
-    - fira-fonts
-    - liberation-fonts
-    - cantarell-fonts
