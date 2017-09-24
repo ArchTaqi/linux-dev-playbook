@@ -2,3 +2,6 @@
 .idea
 playbook/roles/ansible.role.postgresql/
 playbook/roles/ansible.role.basic.software/
+playbook/roles/ansible.role.php/
+playbook/roles/ansible.role.python/
+playbook/roles/ansible.role.mysql/
