@@ -1,7 +1,0 @@
----
-- name: Synchronize project files with HOST machine
-  become: yes
-  synchronize: src="{{ app__sync_dir }}" dest="{{ app__project_version_root }}" checksum=yes compress=yes archive=yes
-
-- name: Update file permissions of synced folder
-  file: path={{ app__project_version_root }} recurse=yes owner={{ ansible_user_id }} group={{ ansible_user_id }} recurse=true

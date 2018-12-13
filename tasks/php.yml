@@ -1,0 +1,29 @@
+---
+
+- name: Install Composer
+  become: yes
+  shell: curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer creates=/usr/local/bin/composer
+
+- name: PHP | Add php-7.2 ondrej PPA
+  apt_repository: repo="ppa:ondrej/php"
+    state=present
+    update_cache=yes
+  become: yes
+
+- name: Update apt
+  become: yes
+  apt: update_cache=yes
+
+- name: Install PHP | install php packages
+  become: yes
+  apt: pkg={{ item }} state=latest
+  with_items: "{{ php__packages }}"
+  when: php__packages is defined
+
+
+- name: Install global Composer packages.
+  composer:
+    command: "{{ (item.state | default('present') == 'absent') | ternary('remove', 'require') }}"
+    arguments: "{{ item.name | default(item) }} {{ item.version | default('@stable') }}"
+    working_dir: "{{ lookup('env', 'COMPOSER_HOME') | default('~/.composer', true) }}"
+  with_items: "{{ composer_packages }}"

@@ -1,7 +1,0 @@
----
-#  - include: apt_package.yml
-#    when: ansible_pkg_mgr == 'apt'
-#  - include: yum_package.yml
-#    when: ansible_pkg_mgr == 'yum'
-#  - include: homebrew_package.yml
-#    when: ansible_os_family == 'Darwin'

@@ -1,5 +1,0 @@
----
-  - include: Ubuntu-16.yml
-    when: (ansible_distribution == "Ubuntu" and ansible_distribution_major_version == "16")
-  - include: CentOS-7.yml
-    when: (ansible_distribution == "CentOS" and ansible_distribution_major_version == "7")

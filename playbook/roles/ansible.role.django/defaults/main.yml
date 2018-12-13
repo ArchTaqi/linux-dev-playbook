@@ -1,4 +1,0 @@
----
-# defaults file for django
-  database: 'django_sandbox'
-  project_name: 'django_sandbox'

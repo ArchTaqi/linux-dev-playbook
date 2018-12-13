@@ -1,0 +1,14 @@
+#- src: git@github.com:muhammadtaqi/ansible.role.basic.software.git
+#  version: master
+#  name: ansible.role.basic.software
+#  scm: git
+#
+#- src: git@github.com:muhammadtaqi/ansible.role.python.git
+#  version: master
+#  name: ansible.role.python
+#  scm: git
+#
+#- src: git@github.com:muhammadtaqi/ansible.role.mysql.git
+#  version: master
+#  name: ansible.role.mysql
+#  scm: git

@@ -1,7 +1,0 @@
----
-#install assets
-- name: Assets install
-  shell: php app/console assets:install --symlink --env={{app__env}} {{app__project_console_opts}} chdir={{ app__project_version_root }}
-
-- name: Assetic dump
-  shell: php app/console assetic:dump --env={{app__env}} {{app__project_console_opts}} chdir={{ app__project_version_root }}

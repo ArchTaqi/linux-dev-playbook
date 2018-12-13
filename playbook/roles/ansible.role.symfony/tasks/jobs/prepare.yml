@@ -1,7 +1,0 @@
-#create project directory
-- name: Create/prepare directories for release and shared data.
-  file: state=directory path={{item.path}} owner={{ansible_user_id}} group={{ansible_user_id}}
-  become: yes
-  with_items:
-      - { path: "{{app__project_base_dir}}" }
-      - { path: "{{app__project_version_root}}" }

@@ -1,3 +1,0 @@
----
-  - include: initialize_server.yml
-  - include: django_project.yml

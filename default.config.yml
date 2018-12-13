@@ -1,0 +1,200 @@
+---
+downloads: ~/.ansible-downloads/
+
+
+configure_terminal: yes
+
+installed_basic_packages:
+  - autoconf
+  - bash-completion
+  - doxygen
+  - gettext
+  - gifsicle
+  - git
+  - go
+  - gpg
+  - hub
+  - httpie
+  - iperf
+  - libevent
+  - sqlite
+  - mcrypt
+  - nmap
+  - node
+  - nvm
+  - php
+  - ssh-copy-id
+  - cowsay
+  - readline
+  - openssl
+  - pv
+  - wget
+  - wrk
+
+apps:
+  - chromedriver
+  - docker
+  - dropbox
+  - firefox
+  - google-chrome
+  - handbrake
+  - licecap
+  - limechat
+  - macvim
+  - sequel-pro
+  - skitch
+  - slack
+  - sublime-text
+  - transmit
+  - vagrant
+
+
+composer_packages: []
+  # - name: drush
+  #   state: present # present/absent, default: present
+#   version: "^8.1" # default: N/A
+gem_packages: []
+  # - name: bundler
+  #   state: present # present/absent/latest, default: present
+#   version: "~> 1.15.1" # default: N/A
+npm_packages: []
+  # - name: webpack
+  #   state: present # present/absent/latest, default: present
+#   version: "^2.6" # default: N/A
+pip_packages: []
+  # - name: mkdocs
+  #   state: present # present/absent/latest, default: present
+#   version: "0.16.3" # default: N/A
+
+# Glob pattern to ansible task files to run after all other tasks are finished.
+post_provision_tasks: []
+
+php__packages:
+  - php7.2
+  - php7.2-fpm
+  - php7.2-dev
+  - php7.2-cli
+  - php7.2-curl
+  - php7.2-bcmath
+  - php7.2-dom
+  - php7.2-mbstring
+  - php7.2-xml
+  - php7.2-common
+  - php7.2-json
+  - php7.2-intl
+  - php7.2-gd
+  - php7.2-mysql
+  - php7.2-redis
+  - php7.2-ldap
+  - php7.2-imagick
+  - php7.2-sqlite3
+  - php7.2-soap
+  - php7.2-xdebug
+
+
+###################################### PYTHON ##########################################################################
+
+python_install_2: no
+python_install_3: yes
+
+python_install_pip2: no
+python_install_pip3: yes
+
+python_pip_packages: []
+python_update_pip: yes
+python_update_setuptools: no
+python_install_virtualenv: no
+python_pip_executable:
+
+
+
+python_apt_common_packages:
+  # common
+  - bpython
+  - bpython3
+  - python-feedparser
+  # pyyaml and it's Dependencies
+  - libyaml-dev
+  - libpython2.7-dev
+
+python_apt_packages_3:
+  - python3
+  - python3-dev
+  - python3-pip
+  - python3-venv
+
+python_yum_packages_3:
+  - python3
+  - python3-dev
+  - python3-pip
+  - python3-venv
+
+python_yum_packages:
+  #- pip
+  - virtualenv
+
+  # common
+  - bpython
+  - bpython3
+  - python-feedparser
+  # pyyaml and it's Dependencies
+  - libyaml-dev
+  - libpython2.7-dev
+  #- pyyaml
+  - Cython
+  - numpy
+  - python-jinja2
+  - python-matplotlib
+  - python-numexpr
+  - python-pillow
+  - python-pip
+  - python-tables
+  - PyYAML
+  - scipy
+
+core_pips:
+  - awscli
+  - boto3
+  - docker-py==1.7.2
+  - gitpython
+  - mkdocs
+  - pep8
+  - virtualenv
+  - virtualenvwrapper
+  - pandas
+  - scipy
+  - shapely
+  - django
+  - pyshp
+  - geopy
+  - pyproj
+  - ipython
+  - jupyter
+  - ipdb
+  - scikit-learn
+  - pyzmq
+  - tornado
+  - pygments
+  - sphinx
+  - patsy
+  - statsmodels
+  - ggplot
+  - fabric
+  - awscli
+  - boto3
+  - docker-py==1.7.2
+  - gitpython
+  - mkdocs
+  - pep8
+  - virtualenv
+  - virtualenvwrapper
+
+
+############################################## Go-lang #################################################################
+
+go_tarball: "go1.11.2.linux-amd64.tar.gz"
+go_tarball_checksum: "1dfe664fa3d8ad714bbd15a36627992effd150ddabd7523931f077b3926d736d"
+go_version_target: "go version go1.11.2 linux/amd64"
+go_dest_dir: /usr/local
+go_download_location: "https://golang.org/dl/{{ go_tarball }}"
+

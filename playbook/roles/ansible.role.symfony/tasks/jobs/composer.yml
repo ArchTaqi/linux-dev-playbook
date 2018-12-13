@@ -1,6 +1,0 @@
----
-#install composer
-- name: Run composer install.
-  shell: cd {{app__project_version_root}} && export SYMFONY_ENV={{app__env}} && php -dmemory_limit=2048M /usr/local/bin/composer install {{app__project_composer_opts}}
-  retries: 10
-  delay: 5
